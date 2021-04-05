@@ -1,16 +1,37 @@
-# This is a sample Python script.
+from typing import List, Dict
+import mysql.connector
+import simplejson as json
+from flask import Flask, Response
 
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
+app = Flask(__name__)
 
 
-# Press the green button in the gutter to run the script.
+def cities_import() -> List[Dict]:
+    config = {
+        'user': 'root',
+        'password': 'root',
+        'host': 'db',
+        'port': '3306',
+        'database': 'citiesData'
+    }
+    connection = mysql.connector.connect(**config)
+    cursor = connection.cursor(dictionary=True)
+
+    cursor.execute("SELECT * FROM tblCitiesImport")
+    result = cursor.fetchall()
+
+    cursor.close()
+    connection.close()
+
+    return result
+
+
+@app.route('/')
+def index() -> str:
+    js = json.dumps(cities_import())
+    resp = Response(js, status=200, mimetype='application/json')
+    return resp
+
+
 if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    app.run(host='0.0.0.0')
