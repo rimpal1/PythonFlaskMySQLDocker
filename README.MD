@@ -6,6 +6,8 @@ This project is a homework assignment to learn how to get Pycharm setup with Doc
 Displaying the user data in table using bootstrap template.
 
 ![DataDisplayed](screenshots/Lesson2.png)
+Successful request on Postman
+![Lesson2Postman](screenshots/postmanLesson2.png)
 
 # SQL Data Screenshot
 
