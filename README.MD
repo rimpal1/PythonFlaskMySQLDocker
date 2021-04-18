@@ -7,7 +7,7 @@ Displaying the user data in table using bootstrap template.
 
 ![DataDisplayed](screenshots/Lesson2.png)
 Successful request on Postman
-![Lesson2Postman](screenshots/postmanLesson2.png)
+![Lesson2Postman](screenshots/postmanRequest.png)
 
 # SQL Data Screenshot
 
